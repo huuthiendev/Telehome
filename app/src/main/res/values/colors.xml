@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTrang">#FFF</color>
+    <color name="colorDen">#000000</color>
+    <color name="colorXam">#767373</color>
+    <color name="colorXamNhat">#F5F5F5</color>
+    <color name="colorDo">#ff0000</color>
+    <color name="colorDoDam">#a71d1d</color>
+    <color name="colorXamNhatTrung">#CCC</color>
+    <color name="colorCam">#f67122</color>
+    <color name="colorFacebook">#4a6ea9</color>
+    <color name="colorXanhLa">#1b8319</color>
+    <color name="colorTelehome">#A2B417</color>
+    <color name="colorTelehomeDam">#3D4409</color>
+</resources>

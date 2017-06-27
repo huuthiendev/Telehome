@@ -1,0 +1,14 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorDen</item>
+        <item name="colorPrimaryDark">@color/colorTrang</item>
+        <item name="colorAccent">@color/colorXam</item>
+    </style>
+
+    <style name="DoiMauNgoiSaoRatingBar" parent="AppTheme">
+        <item name="colorControlNormal">@color/colorCam</item>
+    </style>
+
+</resources>

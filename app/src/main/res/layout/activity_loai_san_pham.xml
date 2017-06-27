@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hhthien.luanvan.telehome.Activities.LoaiSanPhamActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTrang"
+        android:id="@+id/appBar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tbSanPhamTheoLoai"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F3F3F3"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnBoLoc"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_expand_more_black_24dp"
+                android:paddingLeft="30dp"
+                android:text="Bộ Lọc"
+                android:drawablePadding="-10dp"/>
+
+            <Button
+                android:id="@+id/btnSapXep"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_filter_list_black_24dp"
+                android:paddingLeft="30dp"
+                android:text="Sắp xếp"
+                android:drawablePadding="-10dp"/>
+
+            <Button
+                android:id="@+id/btnCheDoXem"
+                android:layout_weight="1.4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_grid_on_black_24dp"
+                android:paddingLeft="15dp"
+                android:drawablePadding="-10dp"/>
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvSanPhamTheoLoai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

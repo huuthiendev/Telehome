@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_trangchu"
+        icon="@drawable/ic_home_black_24dp"
+        title="Trang chủ" />
+    <tab
+        id="@+id/tab_timkiem"
+        icon="@drawable/ic_search_black_24dp"
+        title="Tìm kiếm" />
+    <tab
+        id="@+id/tab_giohang"
+        icon="@drawable/ic_shopping_cart_black_24dp"
+        title="Giỏ hàng" />
+    <tab
+        id="@+id/tab_quantam"
+        icon="@drawable/ic_favorite_black_24dp"
+        title="Quan tâm" />
+    <tab
+        id="@+id/tab_taikhoan"
+        icon="@drawable/ic_account_circle_black_24dp"
+        title="Tài khoản" />
+</tabs>
