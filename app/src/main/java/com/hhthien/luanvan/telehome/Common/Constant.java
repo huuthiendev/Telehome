@@ -23,4 +23,7 @@ public class Constant {
 
     //Địa chỉ api thương hiệu
     public static final String DANHSACH_THUONG_HIEU_THEO_LOAI = "api/thuonghieu/thuonghieutheoloai/";
+
+    //Địa chỉ api người dùng
+    public static final String POST_NGUOI_DUNG_DANG_NHAP = "api/nguoidung/dangnhap";
 }

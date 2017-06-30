@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:text="10000000"
         android:textSize="16dp"
-        android:textColor="#ff00"/>
+        android:textColor="@color/colorDoDam"/>
 
     </LinearLayout>
 

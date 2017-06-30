@@ -221,7 +221,7 @@
         android:layout_marginRight="15dp"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|right|end"
-        android:backgroundTint="@color/colorCam"
+        app:backgroundTint="@color/colorCam"
         android:src="@drawable/ic_favorite_white_48dp"/>
 
     <LinearLayout

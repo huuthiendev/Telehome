@@ -1,6 +1,8 @@
 package com.hhthien.luanvan.telehome.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.hhthien.luanvan.telehome.Fragments.QuanTamFragment;
+import com.hhthien.luanvan.telehome.Fragments.TaiKhoanFragment;
 import com.hhthien.luanvan.telehome.Fragments.TrangChuFragment;
 import com.hhthien.luanvan.telehome.R;
 import com.roughike.bottombar.BottomBar;
@@ -46,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameContent, fQuanTam).commit();
             }
             else if (tabId == R.id.tab_taikhoan) {
-//                TaiKhoanFragment fTaiKhoan = new TaiKhoanFragment();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.frameContent, fTaiKhoan).commit();
-                Intent intentDangNhap = new Intent(MainActivity.this, DangNhapActivity.class);
-                startActivity(intentDangNhap);
+                SharedPreferences sharedPreferences = getSharedPreferences("dangnhap", Context.MODE_PRIVATE);
+                String tennd = sharedPreferences.getString("tennd", "");
+                if (tennd.isEmpty()) {
+                    Intent intentDangNhap = new Intent(MainActivity.this, DangNhapActivity.class);
+                    startActivity(intentDangNhap);
+                } else {
+                    TaiKhoanFragment fTaiKhoan = new TaiKhoanFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameContent, fTaiKhoan).commit();
+                }
             }
         }
     };

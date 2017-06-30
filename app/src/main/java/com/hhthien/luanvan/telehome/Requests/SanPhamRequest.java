@@ -1,7 +1,7 @@
 package com.hhthien.luanvan.telehome.Requests;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,12 +22,15 @@ import java.util.List;
  */
 
 public class SanPhamRequest {
+    private static String TAG = "SanPhamRequest";
+
     public static JsonArrayRequest DanhSachSanPhamMoi
             (final Context context, final SanPhamAdapter adapterSP, final List<SanPham> listSanPhamMoi) {
         JsonArrayRequest request = new JsonArrayRequest(Constant.DIACHI_MAYCHU + Constant.DANHSACH_SAN_PHAM_MOI,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d(TAG, "S? lu?ng s?n ph?m m?i: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -50,7 +53,8 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+
+                Log.d(TAG, "L?i: DanhSachSanPhamMoi " + error.getMessage());
             }
         });
         return request;
@@ -63,6 +67,7 @@ public class SanPhamRequest {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -86,7 +91,7 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachSanPhamTheoLoai " + error.getMessage());
             }
         });
         return request;
@@ -102,6 +107,7 @@ public class SanPhamRequest {
                     @Override
                     public void onResponse(JSONArray response) {
                         listSanPham.clear();
+                        Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i theo thuong hi?u theo giá: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -125,7 +131,7 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachSanPhamTheoLoaiTheoThuongHieuTheoGia " + error.getMessage());
             }
         });
         return request;
@@ -139,6 +145,7 @@ public class SanPhamRequest {
                     @Override
                     public void onResponse(JSONArray response) {
                         listSanPham.clear();
+                        Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i theo thuong hi?u: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -162,7 +169,7 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachSanPhamTheoLoaiTheoThuongHieu " + error.getMessage());
             }
         });
         return request;
@@ -178,6 +185,7 @@ public class SanPhamRequest {
                     @Override
                     public void onResponse(JSONArray response) {
                         listSanPham.clear();
+                        Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i theo giá: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -201,7 +209,7 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachSanPhamTheoLoaiTheoGia " + error.getMessage());
             }
         });
         return request;
@@ -213,6 +221,7 @@ public class SanPhamRequest {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i theo giá: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -226,7 +235,7 @@ public class SanPhamRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachHinhSanPham " + error.getMessage());
             }
         });
         return request;

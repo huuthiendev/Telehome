@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.hhthien.luanvan.telehome.R;
+import com.hhthien.luanvan.telehome.Requests.NguoiDungRequest;
 
 public class DangNhapActivity extends AppCompatActivity implements View.OnClickListener{
-    Button btnTrangDangKy;
+    private static String TAG = "DangNhapActivity";
+    private Button btnTrangDangKy, btnDangNhap;
+    private EditText edtEmail, edtMatKhau;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +24,11 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
 
     private void anhXa() {
         btnTrangDangKy = (Button) findViewById(R.id.btnTrangDangKy);
+        btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtMatKhau = (EditText) findViewById(R.id.edtMatKhau);
         btnTrangDangKy.setOnClickListener(this);
+        btnDangNhap.setOnClickListener(this);
     }
 
     @Override
@@ -29,6 +38,8 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(this, DangKyActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btnDangNhap:
+                NguoiDungRequest.KiemTraDangNhap(this, edtEmail.getText().toString(), edtMatKhau.getText().toString());
         }
     }
 }

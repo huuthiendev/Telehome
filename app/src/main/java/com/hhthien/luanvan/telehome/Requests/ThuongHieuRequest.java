@@ -1,7 +1,7 @@
 package com.hhthien.luanvan.telehome.Requests;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +21,7 @@ import java.util.List;
  */
 
 public class ThuongHieuRequest {
+    private static String TAG = "ThuongHieuRequest";
 
     public static JsonArrayRequest DanhSachThuongHieuTheoLoaiSanPham (final Context context, final ThuongHieuAdapter adapterTH,
                                                                       final List<ThuongHieu> listThuongHieu, int maloaisp) {
@@ -28,6 +29,7 @@ public class ThuongHieuRequest {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d(TAG, "S? lu?ng thuong hi?u theo lo?i s?n ph?m: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject jsonObject = response.getJSONObject(i);
@@ -43,7 +45,7 @@ public class ThuongHieuRequest {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "L?i: DanhSachThuongHieuTheoLoaiSanPham " + error.getMessage());
             }
         });
         return requestLoaiSP;
