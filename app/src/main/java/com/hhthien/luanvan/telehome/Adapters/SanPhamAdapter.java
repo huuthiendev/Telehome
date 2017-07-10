@@ -51,9 +51,14 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
         sanpham = list.get(position);
         holder.tvTenSP.setText(sanpham.getTensp());
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        holder.tvGiaSP.setText(formatter.format(sanpham.getGia()) + " đ");
-        holder.tvGiaGocSP.setText(formatter.format(sanpham.getGiagoc()) + " đ");
-        holder.tvGiaGocSP.setPaintFlags(holder.tvGiaGocSP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        if (sanpham.getGia() == sanpham.getGiagoc()) {
+            holder.tvGiaSP.setText(formatter.format(sanpham.getGia()) + " đ");
+            holder.tvGiaGocSP.setText("");
+        } else {
+            holder.tvGiaSP.setText(formatter.format(sanpham.getGia()) + " đ");
+            holder.tvGiaGocSP.setText(formatter.format(sanpham.getGiagoc()) + " đ");
+            holder.tvGiaGocSP.setPaintFlags(holder.tvGiaGocSP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
         Picasso.with(context).load(sanpham.getHinhsp()).into(holder.imgSanPham);
         final Activity activity = (Activity) context;
         holder.cvSanPham.setOnClickListener(new View.OnClickListener() {

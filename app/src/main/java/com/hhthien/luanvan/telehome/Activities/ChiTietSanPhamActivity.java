@@ -57,9 +57,14 @@ public class ChiTietSanPhamActivity extends AppCompatActivity implements View.On
 
         tvTenSanPham.setText(sanpham.getTensp());
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        tvGiaKM.setText(formatter.format(sanpham.getGia()) + " VNĐ");
-        tvGiaGoc.setText(formatter.format(sanpham.getGiagoc()) + " VNĐ");
-        tvGiaGoc.setPaintFlags(tvGiaGoc.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        if (sanpham.getGia() == sanpham.getGiagoc()) {
+            tvGiaKM.setText(formatter.format(sanpham.getGia()) + " VNĐ");
+            tvGiaGoc.setText("");
+        } else {
+            tvGiaKM.setText(formatter.format(sanpham.getGia()) + " VNĐ");
+            tvGiaGoc.setText(formatter.format(sanpham.getGiagoc()) + " VNĐ");
+            tvGiaGoc.setPaintFlags(tvGiaGoc.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
 
         mPager.setAdapter(adapterSP);
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
