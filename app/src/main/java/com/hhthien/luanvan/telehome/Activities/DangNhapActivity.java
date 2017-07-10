@@ -37,9 +37,18 @@ public class DangNhapActivity extends AppCompatActivity implements View.OnClickL
             case R.id.btnTrangDangKy:
                 Intent intent = new Intent(this, DangKyActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             case R.id.btnDangNhap:
                 NguoiDungRequest.KiemTraDangNhap(this, edtEmail.getText().toString(), edtMatKhau.getText().toString());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DangNhapActivity.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

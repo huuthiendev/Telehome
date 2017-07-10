@@ -1,5 +1,6 @@
 package com.hhthien.luanvan.telehome.Activities;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,5 +30,13 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnDieuKhoan:
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

@@ -17,6 +17,7 @@ import android.widget.PopupMenu;
 
 import com.android.volley.toolbox.Volley;
 import com.hhthien.luanvan.telehome.Adapters.SanPhamAdapter;
+import com.hhthien.luanvan.telehome.Models.LoaiSanPham;
 import com.hhthien.luanvan.telehome.Models.SanPham;
 import com.hhthien.luanvan.telehome.R;
 import com.hhthien.luanvan.telehome.Requests.SanPhamRequest;
@@ -109,7 +110,8 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            Intent intent = new Intent(LoaiSanPhamActivity.this, MainActivity.class);
+            startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
@@ -118,6 +120,8 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(LoaiSanPhamActivity.this, MainActivity.class);
+        startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 

@@ -10,6 +10,8 @@ public class SanPham implements Serializable {
     private int id;
     private String tensp;
     private int gia;
+    private int giagoc;
+    private int phantramkm;
     private String mota;
     private int maloai;
     private int math;
@@ -36,6 +38,21 @@ public class SanPham implements Serializable {
         this.id = id;
         this.tensp = tensp;
         this.gia = gia;
+        this.mota = mota;
+        this.maloai = maloai;
+        this.math = math;
+        this.soluong = soluong;
+        this.luotmua = luotmua;
+        this.hinhsp = hinhsp;
+        this.ngaydang = ngaydang;
+    }
+
+    public SanPham(int id, String tensp, int gia, int giagoc, int phantramkm, String mota, int maloai, int math, int soluong, int luotmua, String hinhsp, long ngaydang) {
+        this.id = id;
+        this.tensp = tensp;
+        this.gia = gia;
+        this.giagoc = giagoc;
+        this.phantramkm = phantramkm;
         this.mota = mota;
         this.maloai = maloai;
         this.math = math;
@@ -123,5 +140,21 @@ public class SanPham implements Serializable {
 
     public void setNgaydang(long ngaydang) {
         this.ngaydang = ngaydang;
+    }
+
+    public int getGiagoc() {
+        return giagoc;
+    }
+
+    public void setGiagoc(int giagoc) {
+        this.giagoc = giagoc;
+    }
+
+    public int getPhantramkm() {
+        return phantramkm;
+    }
+
+    public void setPhantramkm(int phantramkm) {
+        this.phantramkm = phantramkm;
     }
 }

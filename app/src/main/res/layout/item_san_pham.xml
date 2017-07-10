@@ -33,12 +33,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
         android:text="10000000"
         android:textSize="16dp"
         android:textColor="@color/colorDoDam"/>
+
+        <TextView
+            android:id="@+id/tvGiaGocSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:text="10000000"
+            android:textSize="16dp"
+            android:textColor="@color/colorXamNhatTrung"/>
 
     </LinearLayout>
 

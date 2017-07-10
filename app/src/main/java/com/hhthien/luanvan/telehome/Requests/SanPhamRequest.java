@@ -38,12 +38,15 @@ public class SanPhamRequest {
                                         jsonObject.getInt("id"),
                                         jsonObject.getString("tensp"),
                                         jsonObject.getInt("gia"),
+                                        jsonObject.getInt("giagoc"),
+                                        jsonObject.getInt("phantramkm"),
                                         jsonObject.getString("mota"),
                                         jsonObject.getInt("maloaisp"),
                                         jsonObject.getInt("math"),
                                         jsonObject.getInt("soluong"),
                                         jsonObject.getInt("luotmua"),
-                                        Constant.DIACHI_MAYCHU + jsonObject.getString("hinhsp")));
+                                        Constant.DIACHI_MAYCHU + jsonObject.getString("hinhsp"),
+                                        jsonObject.getLong("ngaydang")));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -75,6 +78,8 @@ public class SanPhamRequest {
                                         jsonObject.getInt("id"),
                                         jsonObject.getString("tensp"),
                                         jsonObject.getInt("gia"),
+                                        jsonObject.getInt("giagoc"),
+                                        jsonObject.getInt("phantramkm"),
                                         jsonObject.getString("mota"),
                                         jsonObject.getInt("maloaisp"),
                                         jsonObject.getInt("math"),
@@ -115,6 +120,8 @@ public class SanPhamRequest {
                                         jsonObject.getInt("id"),
                                         jsonObject.getString("tensp"),
                                         jsonObject.getInt("gia"),
+                                        jsonObject.getInt("giagoc"),
+                                        jsonObject.getInt("phantramkm"),
                                         jsonObject.getString("mota"),
                                         jsonObject.getInt("maloaisp"),
                                         jsonObject.getInt("math"),
@@ -153,6 +160,8 @@ public class SanPhamRequest {
                                         jsonObject.getInt("id"),
                                         jsonObject.getString("tensp"),
                                         jsonObject.getInt("gia"),
+                                        jsonObject.getInt("giagoc"),
+                                        jsonObject.getInt("phantramkm"),
                                         jsonObject.getString("mota"),
                                         jsonObject.getInt("maloaisp"),
                                         jsonObject.getInt("math"),
@@ -193,6 +202,8 @@ public class SanPhamRequest {
                                         jsonObject.getInt("id"),
                                         jsonObject.getString("tensp"),
                                         jsonObject.getInt("gia"),
+                                        jsonObject.getInt("giagoc"),
+                                        jsonObject.getInt("phantramkm"),
                                         jsonObject.getString("mota"),
                                         jsonObject.getInt("maloaisp"),
                                         jsonObject.getInt("math"),
@@ -240,4 +251,42 @@ public class SanPhamRequest {
         });
         return request;
     }
+
+    public static JsonArrayRequest DanhSachSanPhamTimKiem
+            (final Context context, final SanPhamAdapter adapterSP, final List<SanPham> listSanPham, String tensp) {
+        JsonArrayRequest request = new JsonArrayRequest(Constant.DIACHI_MAYCHU + Constant.DANHSACH_SAN_PHAM_TIM_KIEM + tensp,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, "S? lu?ng s?n ph?m tìm du?c: " + response.length());
+                        listSanPham.clear();
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject jsonObject = response.getJSONObject(i);
+                                listSanPham.add(new SanPham(
+                                        jsonObject.getInt("id"),
+                                        jsonObject.getString("tensp"),
+                                        jsonObject.getInt("gia"),
+                                        jsonObject.getString("mota"),
+                                        jsonObject.getInt("maloaisp"),
+                                        jsonObject.getInt("math"),
+                                        jsonObject.getInt("soluong"),
+                                        jsonObject.getInt("luotmua"),
+                                        Constant.DIACHI_MAYCHU + jsonObject.getString("hinhsp")));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        adapterSP.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.d(TAG, "L?i: DanhSachSanPhamTimKiem " + error.getMessage());
+            }
+        });
+        return request;
+    }
+
 }

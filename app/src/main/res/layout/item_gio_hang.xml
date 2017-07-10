@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="2.5dp"
+    android:paddingBottom="2.5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="7dp"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/imgHinhSPGH"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTenSPGH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="Tên sản phẩm"
+            android:textColor="#040404"
+            android:textSize="15dp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/tvGiaSPGH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTenSPGH"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="102dp"
+            android:layout_weight="0.23"
+            android:paddingRight="5dp"
+            android:text="12.000.000 đ"
+            android:textColor="@color/colorDoDam"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/cart_plus_minus_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvTenSPGH"
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:text="Số lượng"
+                android:textSize="15dp"
+                android:typeface="sans"
+                android:layout_marginRight="15dp"/>
+
+            <ImageView
+                android:id="@+id/btnTruGH"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_minus" />
+
+            <TextView
+                android:id="@+id/tvSoLuongGH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="10"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/btnCongGH"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon_plus" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnXoaSPGH"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="#0000"
+            android:src="@drawable/ic_close_blue_grey_600_24dp" />
+    </RelativeLayout>
+
+</LinearLayout>

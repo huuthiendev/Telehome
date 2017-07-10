@@ -3,6 +3,7 @@ package com.hhthien.luanvan.telehome.Adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,7 +51,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
         sanpham = list.get(position);
         holder.tvTenSP.setText(sanpham.getTensp());
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        holder.tvGiaSP.setText(formatter.format(sanpham.getGia()) + " VNĐ");
+        holder.tvGiaSP.setText(formatter.format(sanpham.getGia()) + " đ");
+        holder.tvGiaGocSP.setText(formatter.format(sanpham.getGiagoc()) + " đ");
+        holder.tvGiaGocSP.setPaintFlags(holder.tvGiaGocSP.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         Picasso.with(context).load(sanpham.getHinhsp()).into(holder.imgSanPham);
         final Activity activity = (Activity) context;
         holder.cvSanPham.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +71,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
     public int getItemCount() {return list.size();}
 
     public class SanPhamViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTenSP, tvGiaSP;
+        TextView tvTenSP, tvGiaSP, tvGiaGocSP;
         CardView cvSanPham;
         ImageView imgSanPham;
 
@@ -76,6 +79,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamV
             super(itemView);
             tvTenSP = (TextView) itemView.findViewById(R.id.tvTenSP);
             tvGiaSP = (TextView) itemView.findViewById(R.id.tvGiaSP);
+            tvGiaGocSP = (TextView) itemView.findViewById(R.id.tvGiaGocSP);
             cvSanPham = (CardView) itemView.findViewById(R.id.cvSanPham);
             imgSanPham = (ImageView) itemView.findViewById(R.id.imgSanPham);
         }

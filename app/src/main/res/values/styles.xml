@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorXanhLa</item>
+        <item name="colorPrimary">@color/colorTelehome</item>
         <item name="colorPrimaryDark">@color/colorTrang</item>
         <item name="colorAccent">@color/colorXam</item>
     </style>

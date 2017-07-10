@@ -1,5 +1,6 @@
 package com.hhthien.luanvan.telehome.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -10,8 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.toolbox.Volley;
+import com.hhthien.luanvan.telehome.Activities.TimKiemActivity;
 import com.hhthien.luanvan.telehome.Adapters.LoaiSanPhamAdapter;
 import com.hhthien.luanvan.telehome.Adapters.SanPhamAdapter;
 import com.hhthien.luanvan.telehome.Adapters.SlideKhuyenMaiAdapter;
@@ -46,6 +49,7 @@ public class TrangChuFragment extends Fragment {
     private RecyclerView.LayoutManager lmLoaiSanPham;
     private RecyclerView rvSanPhamMoi;
     private RecyclerView.LayoutManager lmSanPhamMoi;
+    private Button btnTimKiem;
     private static ViewPager mPager;
     private static int currentPage = 0;
 
@@ -71,6 +75,7 @@ public class TrangChuFragment extends Fragment {
         View view = inflater.inflate(R.layout.layout_trang_chu, container, false);
         rvLoaiSanPham = (RecyclerView) view.findViewById(R.id.rvLoaiSanPham);
         rvSanPhamMoi = (RecyclerView) view.findViewById(R.id.rvSanPhamMoi);
+        btnTimKiem = (Button) view.findViewById(R.id.btnTimKiem);
         mPager = (ViewPager) view.findViewById(R.id.pager);
         mPager.setAdapter(adapterKM);
 
@@ -105,6 +110,15 @@ public class TrangChuFragment extends Fragment {
         Volley.newRequestQueue(getActivity()).add(KhuyenMaiRequest.DanhSachKhuyenMai(getActivity(), adapterKM, listKhuyenMai));
         Volley.newRequestQueue(getActivity()).add(LoaiSanPhamRequest.DanhSachLoaiSanPham(getActivity(), adapterLoaiSP, listLoaiSP));
         Volley.newRequestQueue(getActivity()).add(SanPhamRequest.DanhSachSanPhamMoi(getActivity(), adapterSP, listSanPhamMoi));
+
+        btnTimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), TimKiemActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
 
         return view;
     }

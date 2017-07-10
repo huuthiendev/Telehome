@@ -22,7 +22,18 @@
         <activity android:name=".Activities.BoLocActivity" />
         <activity android:name=".Activities.ChiTietSanPhamActivity" />
         <activity android:name=".Activities.DangNhapActivity" />
-        <activity android:name=".Activities.DangKyActivity"></activity>
+        <activity android:name=".Activities.DangKyActivity" />
+        <activity android:name=".Activities.GioHangActivity" />
+        <activity android:name=".Activities.ThanhToanActivity" />
+        <activity android:name=".Activities.TimKiemActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.KhuyenMaiActivity"></activity>
     </application>
 
 </manifest>
