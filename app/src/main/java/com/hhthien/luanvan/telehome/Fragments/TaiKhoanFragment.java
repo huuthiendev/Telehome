@@ -34,7 +34,7 @@ public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dangnhap", Context.MODE_PRIVATE);
         String tennd = sharedPreferences.getString("tennd", "");
         tvTenNguoiDung.setText(tennd);
-        tbTaiKhoan.setTitle("Qu?n lý tài kho?n");
+        tbTaiKhoan.setTitle("Qu?n Lý Tài Kho?n");
 
         return view;
     }

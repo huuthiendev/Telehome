@@ -3,6 +3,7 @@ package com.hhthien.luanvan.telehome.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,6 @@ import android.widget.PopupMenu;
 
 import com.android.volley.toolbox.Volley;
 import com.hhthien.luanvan.telehome.Adapters.SanPhamAdapter;
-import com.hhthien.luanvan.telehome.Models.LoaiSanPham;
 import com.hhthien.luanvan.telehome.Models.SanPham;
 import com.hhthien.luanvan.telehome.R;
 import com.hhthien.luanvan.telehome.Requests.SanPhamRequest;
@@ -34,9 +34,11 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
     private RecyclerView.LayoutManager lmLoaiSanPham;
     private Toolbar tbSanPhamTheoLoai;
     private Button btnCheDoXem, btnSapXep, btnBoLoc;
-    private Boolean flagCheDoXem = false;
+    private FloatingActionButton btnChonLoaiSanPham;
+    private Boolean flagCheDoXem = true;
     private int maLoai;
-    private int KET_QUA = 3777;
+    private int KET_QUA_BO_LOC = 3777;
+    private int KET_QUA_CHON = 37777;
     private String TAG = "LoaiSanPhamActivity";
 
     @Override
@@ -56,9 +58,9 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapterSP = new SanPhamAdapter(this, listSanPham, R.layout.item_loai_san_pham_sanpham_grid);
+        adapterSP = new SanPhamAdapter(this, listSanPham, R.layout.item_loai_san_pham_sanpham_list);
         rvSanPhamTheoLoai.setAdapter(adapterSP);
-        lmLoaiSanPham = new GridLayoutManager(LoaiSanPhamActivity.this, 2);
+        lmLoaiSanPham = new LinearLayoutManager(LoaiSanPhamActivity.this);
         rvSanPhamTheoLoai.setLayoutManager(lmLoaiSanPham);
 
         Volley.newRequestQueue(this).add(SanPhamRequest.DanhSachSanPhamTheoLoai(this, adapterSP, listSanPham, maLoai));
@@ -70,13 +72,15 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
         btnCheDoXem = (Button) findViewById(R.id.btnCheDoXem);
         btnSapXep = (Button) findViewById(R.id.btnSapXep);
         btnBoLoc = (Button) findViewById(R.id.btnBoLoc);
+        btnChonLoaiSanPham = (FloatingActionButton) findViewById(R.id.btnChonLoaiSanPham);
         btnCheDoXem.setOnClickListener(this);
         btnSapXep.setOnClickListener(this);
         btnBoLoc.setOnClickListener(this);
+        btnChonLoaiSanPham.setOnClickListener(this);
         listSanPham = new ArrayList<>();
     }
 
-    private void showPopupMenu(){
+    private void ShowPopupMenuSapXep(){
         PopupMenu popupMenu = new PopupMenu(this, btnSapXep);
         popupMenu.inflate(R.menu.popup_menu);
         popupMenu.show();
@@ -177,12 +181,17 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
                 }
                 break;
             case R.id.btnSapXep:
-                showPopupMenu();
+                ShowPopupMenuSapXep();
                 break;
             case R.id.btnBoLoc:
                 Intent intent = new Intent(LoaiSanPhamActivity.this, BoLocActivity.class);
                 intent.putExtra("maloaisp", maLoai);
-                startActivityForResult(intent, KET_QUA);
+                startActivityForResult(intent, KET_QUA_BO_LOC);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                break;
+            case R.id.btnChonLoaiSanPham:
+                Intent intentChon = new Intent(LoaiSanPhamActivity.this, ChonLoaiSanPhamActivity.class);
+                startActivityForResult(intentChon, KET_QUA_CHON);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
         }
@@ -190,8 +199,8 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == KET_QUA) {
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == KET_QUA_BO_LOC) {
+            if(resultCode == Activity.RESULT_OK) {
                 int math = data.getIntExtra("math", 0);
                 int giabd = data.getIntExtra("giabd", 0);
                 int giakt = data.getIntExtra("giakt", 0);
@@ -209,6 +218,14 @@ public class LoaiSanPhamActivity extends AppCompatActivity implements View.OnCli
                                     this, adapterSP, listSanPham, maLoai, giabd, giakt));
                 }
                 Log.d(TAG, math + " " + giabd + " " + giakt);
+            }
+        }
+        if (requestCode == KET_QUA_CHON) {
+            if (resultCode == Activity.RESULT_OK) {
+                int maloaisp = data.getIntExtra("maloaisp", 0);
+                String tenloaisp = data.getStringExtra("tenloaisp");
+                tbSanPhamTheoLoai.setTitle(tenloaisp);
+                Volley.newRequestQueue(this).add(SanPhamRequest.DanhSachSanPhamTheoLoai(this, adapterSP, listSanPham, maloaisp));
             }
         }
     }

@@ -18,20 +18,22 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hhthien.luanvan.telehome.Common.ModelGioHang;
 import com.hhthien.luanvan.telehome.Models.HoaDon;
 import com.hhthien.luanvan.telehome.R;
 import com.hhthien.luanvan.telehome.Requests.GioHangRequest;
 import com.hhthien.luanvan.telehome.Requests.NguoiDungRequest;
 
 public class ThanhToanActivity extends AppCompatActivity implements View.OnClickListener {
-    Toolbar tbThanhToan;
-    EditText edtTenNguoiNhan, edtDiaChi, edtSoDT;
-    TextView tvNhanTienKhiGiaoHang, tvChuyenKhoan;
-    ImageButton btnNhanTienKhiGiaoHang, btnChuyenKhoan;
-    Button btnThanhToan;
-    CheckBox cbThoaThuan;
-    int chonHinhThuc = 0;
+    private Toolbar tbThanhToan;
+    private EditText edtTenNguoiNhan, edtDiaChi, edtSoDT;
+    private TextView tvNhanTienKhiGiaoHang, tvChuyenKhoan;
+    private ImageButton btnNhanTienKhiGiaoHang, btnChuyenKhoan;
+    private Button btnThanhToan;
+    private CheckBox cbThoaThuan;
+    private int chonHinhThuc = 0;
     private int mand;
+    private ModelGioHang modelGioHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class ThanhToanActivity extends AppCompatActivity implements View.OnClick
         SharedPreferences sharedPreferences = getSharedPreferences("dangnhap", Context.MODE_PRIVATE);
         mand = sharedPreferences.getInt("id", 0);
         NguoiDungRequest.ThongTinNguoiDungThanhToan(this, edtTenNguoiNhan, edtSoDT, edtDiaChi, mand);
+
+        modelGioHang = new ModelGioHang();
+        modelGioHang.MoKetNoiSQL(this);
     }
 
     private void anhXa() {
@@ -80,6 +85,7 @@ public class ThanhToanActivity extends AppCompatActivity implements View.OnClick
                         } else {
                             HoaDon hoadon = new HoaDon(mand, tennguoinhan, sodt, diachi, chonHinhThuc);
                             GioHangRequest.ThanhToan(this, hoadon);
+//                            GioHangRequest.ThanhToanTest(this, hoadon, modelGioHang.LayDanhSachSanPhamTrongGioHang());
                         }
                     } else {
                         Toast.makeText(this,"Bạn chưa nhấn chọn vào ô thỏa thuận", Toast.LENGTH_SHORT).show();

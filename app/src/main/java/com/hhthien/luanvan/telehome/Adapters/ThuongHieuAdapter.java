@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hhthien.luanvan.telehome.Common.PassData;
+import com.hhthien.luanvan.telehome.Common.PassDataThuongHieu;
 import com.hhthien.luanvan.telehome.Models.ThuongHieu;
 import com.hhthien.luanvan.telehome.R;
 import com.squareup.picasso.Picasso;
@@ -24,12 +24,12 @@ public class ThuongHieuAdapter extends RecyclerView.Adapter<ThuongHieuAdapter.Th
     Context context;
     List<ThuongHieu> list;
     ThuongHieu thuonghieu;
-    PassData passData;
+    PassDataThuongHieu passDataThuongHieu;
 
-    public ThuongHieuAdapter(Context context, List<ThuongHieu> list, PassData passData) {
+    public ThuongHieuAdapter(Context context, List<ThuongHieu> list, PassDataThuongHieu passDataThuongHieu) {
         this.context = context;
         this.list = list;
-        this.passData = passData;
+        this.passDataThuongHieu = passDataThuongHieu;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ThuongHieuAdapter extends RecyclerView.Adapter<ThuongHieuAdapter.Th
         holder.cvThuongHieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passData.sendTH(list.get(position).getId(), list.get(position).getTenth());
+                passDataThuongHieu.sendTH(list.get(position).getId(), list.get(position).getTenth());
             }
         });
     }

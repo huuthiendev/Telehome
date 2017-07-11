@@ -70,6 +70,7 @@ public class SanPhamRequest {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        listSanPham.clear();
                         Log.d(TAG, "S? lu?ng s?n ph?m theo lo?i: " + response.length());
                         for (int i = 0; i < response.length(); i++) {
                             try {

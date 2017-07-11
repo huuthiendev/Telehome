@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity implements View.On
     private SlideSanPhamAdapter adapterSP;
     private List<String> listHinh;
     private ModelGioHang modelGioHang;
+    private ImageButton btnDenGioHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity implements View.On
         tvGiaGoc = (TextView) findViewById(R.id.tvGiaGoc);
         btnThemVaoGioHang = (Button) findViewById(R.id.btnThemVaoGioHang);
         btnThemVaoGioHang.setOnClickListener(this);
+        btnDenGioHang = (ImageButton) findViewById(R.id.btnDenGioHang);
+        btnDenGioHang.setOnClickListener(this);
     }
 
     @Override
@@ -136,6 +140,10 @@ public class ChiTietSanPhamActivity extends AppCompatActivity implements View.On
                 modelGioHang.ThemGioHang(gioHang);
                 Toast.makeText(this, "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.btnDenGioHang:
+                Intent intent = new Intent(ChiTietSanPhamActivity.this, GioHangActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 }

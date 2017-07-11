@@ -145,4 +145,51 @@ public class GioHangRequest {
         };
         Volley.newRequestQueue(context).add(request);
     }
+
+    public static void ThanhToanTest(final Context context, final HoaDon hoadon, List<GioHang> listGioHang) {
+        String chuoijson = "{\"DANHSACHSANPHAM\" :[ ";
+        for (int i=0; i < listGioHang.size(); i++){
+            chuoijson += "{";
+            chuoijson += "\"masp\" : " + listGioHang.get(i).getMasp() + ",";
+            chuoijson += "\"soluong\" : " + listGioHang.get(i).getSoluong();
+
+            if(i==listGioHang.size() -1 ){
+                chuoijson += "}";
+            }else{
+                chuoijson += "},";
+            }
+
+        }
+        chuoijson += "]}";
+        final String finalChuoijson = chuoijson;
+        StringRequest request = new StringRequest(Request.Method.POST, Constant.DIACHI_MAYCHU + Constant.POST_THANH_TOAN_HOA_DON,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(context, "Hóa đơn của bạn đã được ghi nhận", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "Lỗi: ThanhToan " + error.getMessage());
+                Toast.makeText(context, "Thanh toán thất bại", Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("mand", String.valueOf(hoadon.getMand()));
+                params.put("tennguoinhan", hoadon.getTennguoinhan());
+                params.put("sodt", hoadon.getSdt());
+                params.put("diachi", hoadon.getDiachi());
+                params.put("phuongthucthanhtoan", String.valueOf(hoadon.getChuyenkhoan()));
+                params.put("danhsachsanpham", finalChuoijson);
+                return params;
+            }
+        };
+        Volley.newRequestQueue(context).add(request);
+    }
 }

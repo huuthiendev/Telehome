@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.android.volley.toolbox.Volley;
 import com.hhthien.luanvan.telehome.Adapters.ThuongHieuAdapter;
 import com.hhthien.luanvan.telehome.Common.NumberTextWatcher;
-import com.hhthien.luanvan.telehome.Common.PassData;
+import com.hhthien.luanvan.telehome.Common.PassDataThuongHieu;
 import com.hhthien.luanvan.telehome.Models.ThuongHieu;
 import com.hhthien.luanvan.telehome.R;
 import com.hhthien.luanvan.telehome.Requests.ThuongHieuRequest;
@@ -28,7 +28,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoLocActivity extends AppCompatActivity implements PassData, View.OnClickListener {
+public class BoLocActivity extends AppCompatActivity implements PassDataThuongHieu, View.OnClickListener {
     private Toolbar tbBoLoc;
     private TextView tvThuongHieu;
     private Button btnApDung;
